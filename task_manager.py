@@ -1,13 +1,16 @@
+# Import necessary modules for Firebase and Firestore
 from firebase_admin import credentials, firestore
 import firebase_admin
 from google.cloud.firestore_v1 import FieldFilter
 
+# Initialize Firebase with the service account JSON key
 cred = credentials.Certificate("task-manager-c7e43-firebase-adminsdk-fbsvc-7c1dc09c47.json")
-
 firebase_admin.initialize_app(cred)
 
+#Create a Firestore client to access the database
 db = firestore.client()
 
+#Function to add a new task
 def add_task(title, description):
     task_data = {
         "title": title,
@@ -24,8 +27,7 @@ def add_task(title, description):
         print(f"Failed to add task '{title}': {e}")
 
 
-
-
+#Function to list all tasks
 def list_tasks():
     try:
         tasks = db.collection("tasks").stream()
@@ -40,7 +42,7 @@ def list_tasks():
         print("Failed to list tasks:", e)
 
 
-
+#Function to mark a task coomplete
 def complete_task(title_to_complete):
     try:
 
@@ -63,7 +65,7 @@ def complete_task(title_to_complete):
         print(f"Error completing task '{title_to_complete}': {e}")
 
 
-
+#Function to edit a task's title or description
 def edit_task(current_title, new_title = None, new_description=None):
     try:
 
@@ -94,7 +96,7 @@ def edit_task(current_title, new_title = None, new_description=None):
     except Exception as e:
         print(f" Error editing task '{current_title}': {e}")
 
-
+#Function to delete a task from Firestore
 def delete_task(title_to_delete):
     try:
 
@@ -104,7 +106,7 @@ def delete_task(title_to_delete):
 
         for task in tasks:
             db.collection("tasks").document(task.id).delete()
-            print(f" Task '{title_to_delete}' deleted.")
+            print(f" Task '{title_to_delete}' is deleted.")
             found = True
         
         if not found:
@@ -113,6 +115,7 @@ def delete_task(title_to_delete):
     except Exception as e:
         print(f" Error deleting task '{title_to_delete}': {e}")
 
-
+#Prevents this file from running standalone
+#Used to separate logic from interface
 if __name__ == "__main__":
     print("This file is a library of functions. Please run task_menu.py instead.")
