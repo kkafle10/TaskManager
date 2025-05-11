@@ -56,7 +56,9 @@ I found these websites useful in developing this software:
 * [Firebase Admin SDK (Python) Setup Guide](https://firebase.google.com/docs/admin/setup)
 * [Google Cloud Firestore Python Client Docs](https://cloud.google.com/python/docs/reference/firestore/latest)
 * [Python try/except (Error Handling) Documentation](https://docs.python.org/3/tutorial/errors.html)
-* [VS Code Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* [Firestore CRUD Operations – YouTube Tutorials](https://www.youtube.com/results?search_query=firebase+firestore+crud+python)  
+* [ChatGPT (OpenAI)](https://chat.openai.com/)  
+* [Stack Overflow](https://stackoverflow.com/)  
 
 ## Future Work
 
